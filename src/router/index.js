@@ -102,11 +102,32 @@ const routes = [
   { path: '/payroll/tax-declarations',name: 'payroll-tax-declarations',component: PayrollTaxDeclarations },
   { path: '/payroll/tds',             name: 'payroll-tds',             component: PayrollTds },
   { path: '/payroll/reports',         name: 'payroll-reports',         component: PayrollReports },
+
+  {
+    path: '/auth/callback',
+    name: 'auth-callback',
+    component: () => import('@/views/AuthCallback.vue'),
+  },
+  {
+    path: '/auth/error',
+    name: 'auth-error',
+    component: () => import('@/views/AuthError.vue'),
+  },
 ]
+
+const PUBLIC_ROUTES = ['auth-callback', 'auth-error']
 
 const router = createRouter({
   history: createWebHashHistory(),
   routes,
+})
+
+// Navigation guard — redirect to error page if no token
+router.beforeEach((to) => {
+  if (PUBLIC_ROUTES.includes(to.name)) return true
+  const token = localStorage.getItem('auth_token')
+  if (!token) return { name: 'auth-error' }
+  return true
 })
 
 export default router

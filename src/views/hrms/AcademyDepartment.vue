@@ -55,17 +55,16 @@
             <td class="fw-500">{{ row.DPTitle }}</td>
             <td class="text-muted">{{ row.DPDescription || '—' }}</td>
             <td>
-              <span class="badge" :class="row.IsActive ? 'badge-green' : 'badge-grey'">
+              <button class="status-toggle" :class="row.IsActive ? 'status-active' : 'status-inactive'" @click="toggleStatus(row)" :title="row.IsActive ? 'Click to deactivate' : 'Click to activate'">
+                <span class="status-dot"></span>
                 {{ row.IsActive ? 'Active' : 'Inactive' }}
-              </span>
+                <span class="status-arrow">⇅</span>
+              </button>
             </td>
             <td class="text-muted">{{ formatDate(row.CreatedOn) }}</td>
             <td class="action-cell">
-              <button class="btn-link" @click="openEdit(row)">Edit</button>
-              <button class="btn-link" :class="row.IsActive ? 'text-warn' : 'text-ok'" @click="toggleStatus(row)">
-                {{ row.IsActive ? 'Deactivate' : 'Activate' }}
-              </button>
-              <button class="btn-link text-danger" @click="confirmDelete(row)">Delete</button>
+              <button class="act-btn act-edit" @click="openEdit(row)">✏ Edit</button>
+              <button class="act-btn act-del" @click="confirmDelete(row)">🗑 Delete</button>
             </td>
           </tr>
         </tbody>
@@ -266,13 +265,53 @@ function formatDate(val) {
 .text-warn  { color: #b7620a; }
 .text-ok    { color: #2e7d32; }
 
-.badge       { display: inline-block; padding: 2px 10px; border-radius: 20px; font-size: 11px; font-weight: 600; }
-.badge-green { background: #e8f5e9; color: #2e7d32; }
-.badge-grey  { background: #f0ede8; color: #888780; }
+/* Status toggle — lives in the Status column */
+.status-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 10px 4px 8px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+}
+.status-dot {
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.status-arrow { font-size: 10px; opacity: 0.6; margin-left: 2px; }
 
-.action-cell  { display: flex; gap: 10px; align-items: center; }
-.btn-link     { background: none; border: none; font-size: 12px; cursor: pointer; padding: 0; font-weight: 500; color: #5b5fc7; }
-.btn-link:hover { text-decoration: underline; }
+.status-active  { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
+.status-active  .status-dot { background: #2e7d32; }
+.status-active:hover  { background: #fdf5f0; color: #b7620a; border-color: #ffd54f; }
+
+.status-inactive { background: #f0ede8; color: #888780; border-color: #ddd9d0; }
+.status-inactive .status-dot { background: #aaa; }
+.status-inactive:hover { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
+
+.action-cell { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; }
+
+.act-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.act-edit  { background: #eef2ff; color: #3730a3; border-color: #c7d2fe; }
+.act-edit:hover  { background: #e0e7ff; }
+.act-del   { background: #fdecea; color: #c0392b; border-color: #f5c6cb; }
+.act-del:hover   { background: #f8d7da; }
 
 /* Modal */
 .modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.35); display: flex; align-items: center; justify-content: center; z-index: 9000; }

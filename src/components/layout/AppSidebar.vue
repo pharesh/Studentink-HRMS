@@ -1,4 +1,5 @@
 <template>
+  <div class="sidebar-root">
   <!-- Mobile backdrop -->
   <div
     class="sidebar-backdrop"
@@ -28,6 +29,17 @@
         <RouterLink class="nav-item" :class="{ active: isActive('hrms-dashboard') }" :to="{ name: 'hrms-dashboard' }" @click="appStore.closeSidebar()">
           <span class="nav-icon">📊</span>Dashboard
         </RouterLink>
+      </div>
+      <div class="nav-section">
+        <div class="nav-group-label" @click="mastersOpen = !mastersOpen">
+          <span>Masters</span>
+          <span class="nav-chevron" :class="{ open: mastersOpen }">›</span>
+        </div>
+        <div class="nav-group-items" :class="{ open: mastersOpen }">
+          <RouterLink class="nav-item nav-item-sub" :class="{ active: isActive('hrms-departments') }" :to="{ name: 'hrms-departments' }" @click="appStore.closeSidebar()">
+            <span class="nav-icon">🏢</span>Departments
+          </RouterLink>
+        </div>
       </div>
       <div class="nav-section">
         <div class="nav-label">People</div>
@@ -72,12 +84,6 @@
         </RouterLink>
         <RouterLink class="nav-item" :class="{ active: isActive('hrms-att-reports') }" :to="{ name: 'hrms-att-reports' }" @click="appStore.closeSidebar()">
           <span class="nav-icon">📈</span>Att. Reports
-        </RouterLink>
-      </div>
-      <div class="nav-section">
-        <div class="nav-label">Masters</div>
-        <RouterLink class="nav-item" :class="{ active: isActive('hrms-departments') }" :to="{ name: 'hrms-departments' }" @click="appStore.closeSidebar()">
-          <span class="nav-icon">🏢</span>Departments
         </RouterLink>
       </div>
       <div class="nav-section">
@@ -214,14 +220,18 @@
       </div>
     </template>
   </aside>
+  </div>
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAppStore } from '@/stores/useAppStore'
 
-const router  = useRouter()
+const router   = useRouter()
 const appStore = useAppStore()
+
+const mastersOpen = ref(true)
 
 function isActive(name) {
   return router.currentRoute.value.name === name
@@ -238,3 +248,42 @@ function switchMode(m) {
   router.push({ name: firstRoutes[m] })
 }
 </script>
+
+<style scoped>
+.sidebar-root { display: contents; }
+
+/* Collapsible nav group */
+.nav-group-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #b4b2a9;
+  padding: 6px 16px 3px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.15s;
+}
+.nav-group-label:hover { color: #5f5e5a; }
+
+.nav-chevron {
+  font-size: 14px;
+  line-height: 1;
+  display: inline-block;
+  transition: transform 0.22s ease;
+  color: #c8c5bc;
+}
+.nav-chevron.open { transform: rotate(90deg); }
+
+.nav-group-items {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.25s ease;
+}
+.nav-group-items.open { max-height: 600px; }
+
+/* Slightly indented sub-items */
+.nav-item-sub { padding-left: 28px; }
+</style>

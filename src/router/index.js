@@ -16,6 +16,9 @@ import AttComputation   from '@/views/hrms/AttComputation.vue'
 import AttReports       from '@/views/hrms/AttReports.vue'
 import Evaluation         from '@/views/hrms/Evaluation.vue'
 import AcademyDepartment  from '@/views/hrms/AcademyDepartment.vue'
+import AcademyDesignation from '@/views/hrms/AcademyDesignation.vue'
+import EmploymentType     from '@/views/hrms/EmploymentType.vue'
+import EmployeeType      from '@/views/hrms/EmployeeType.vue'
 
 // NESTS views
 import NestsDashboard   from '@/views/nests/NestsDashboard.vue'
@@ -69,7 +72,10 @@ const routes = [
   { path: '/hrms/att-computation',  name: 'hrms-att-computation',  component: AttComputation },
   { path: '/hrms/att-reports',      name: 'hrms-att-reports',      component: AttReports },
   { path: '/hrms/evaluation',        name: 'hrms-evaluation',        component: Evaluation },
-  { path: '/hrms/departments',       name: 'hrms-departments',       component: AcademyDepartment },
+  { path: '/hrms/departments',        name: 'hrms-departments',        component: AcademyDepartment },
+  { path: '/hrms/designations',        name: 'hrms-designations',        component: AcademyDesignation },
+  { path: '/hrms/employment-types',    name: 'hrms-employment-types',    component: EmploymentType },
+  { path: '/hrms/employee-types',      name: 'hrms-employee-types',      component: EmployeeType },
 
   // NESTS
   { path: '/nests/dashboard',       name: 'nests-dashboard',       component: NestsDashboard },

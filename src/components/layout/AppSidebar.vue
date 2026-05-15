@@ -39,6 +39,15 @@
           <RouterLink class="nav-item nav-item-sub" :class="{ active: isActive('hrms-departments') }" :to="{ name: 'hrms-departments' }" @click="appStore.closeSidebar()">
             <span class="nav-icon">🏢</span>Departments
           </RouterLink>
+          <RouterLink class="nav-item nav-item-sub" :class="{ active: isActive('hrms-designations') }" :to="{ name: 'hrms-designations' }" @click="appStore.closeSidebar()">
+            <span class="nav-icon">🏷️</span>Designations
+          </RouterLink>
+          <RouterLink class="nav-item nav-item-sub" :class="{ active: isActive('hrms-employment-types') }" :to="{ name: 'hrms-employment-types' }" @click="appStore.closeSidebar()">
+            <span class="nav-icon">💼</span>Employment Types
+          </RouterLink>
+          <RouterLink class="nav-item nav-item-sub" :class="{ active: isActive('hrms-employee-types') }" :to="{ name: 'hrms-employee-types' }" @click="appStore.closeSidebar()">
+            <span class="nav-icon">👤</span>Employee Types
+          </RouterLink>
         </div>
       </div>
       <div class="nav-section">

@@ -18,6 +18,9 @@ const PAGE_TITLES = {
   'hrms-att-reports':      'Attendance Reports',
   'hrms-evaluation':       'Performance Evaluation',
   'hrms-departments':      'Department Master',
+  'hrms-designations':     'Designation Master',
+  'hrms-employment-types': 'Employment Type Master',
+  'hrms-employee-types':  'Employee Type Master',
   // NESTS
   'nests-dashboard':       'NESTS — National Dashboard',
   'nests-schools':         'EMRS Schools',

@@ -75,6 +75,12 @@
         </RouterLink>
       </div>
       <div class="nav-section">
+        <div class="nav-label">Masters</div>
+        <RouterLink class="nav-item" :class="{ active: isActive('hrms-departments') }" :to="{ name: 'hrms-departments' }" @click="appStore.closeSidebar()">
+          <span class="nav-icon">🏢</span>Departments
+        </RouterLink>
+      </div>
+      <div class="nav-section">
         <div class="nav-label">Evaluation</div>
         <RouterLink class="nav-item" :class="{ active: isActive('hrms-evaluation') }" :to="{ name: 'hrms-evaluation' }" @click="appStore.closeSidebar()">
           <span class="nav-icon">⭐</span>Reviews

@@ -14,7 +14,8 @@ import ShiftMaster      from '@/views/hrms/ShiftMaster.vue'
 import ShiftAssign      from '@/views/hrms/ShiftAssign.vue'
 import AttComputation   from '@/views/hrms/AttComputation.vue'
 import AttReports       from '@/views/hrms/AttReports.vue'
-import Evaluation       from '@/views/hrms/Evaluation.vue'
+import Evaluation         from '@/views/hrms/Evaluation.vue'
+import AcademyDepartment  from '@/views/hrms/AcademyDepartment.vue'
 
 // NESTS views
 import NestsDashboard   from '@/views/nests/NestsDashboard.vue'
@@ -67,7 +68,8 @@ const routes = [
   { path: '/hrms/shift-assign',     name: 'hrms-shift-assign',     component: ShiftAssign },
   { path: '/hrms/att-computation',  name: 'hrms-att-computation',  component: AttComputation },
   { path: '/hrms/att-reports',      name: 'hrms-att-reports',      component: AttReports },
-  { path: '/hrms/evaluation',       name: 'hrms-evaluation',       component: Evaluation },
+  { path: '/hrms/evaluation',        name: 'hrms-evaluation',        component: Evaluation },
+  { path: '/hrms/departments',       name: 'hrms-departments',       component: AcademyDepartment },
 
   // NESTS
   { path: '/nests/dashboard',       name: 'nests-dashboard',       component: NestsDashboard },

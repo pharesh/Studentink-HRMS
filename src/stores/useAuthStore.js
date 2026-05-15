@@ -12,7 +12,7 @@ export const useAuthStore = defineStore('auth', () => {
   const isLoggedIn = computed(() => !!token.value)
 
   const userName = computed(() =>
-    user.value?.name || user.value?.username || user.value?.ContactNumber || ''
+    user.value?.DisplayName || user.value?.name || user.value?.username || ''
   )
 
   const userAvatar = computed(() => {
@@ -57,7 +57,8 @@ export const useAuthStore = defineStore('auth', () => {
     return data
   }
 
-  function logout() {
+  async function logout() {
+    try { await api.post('/logout') } catch (_) { /* token may already be expired */ }
     token.value = null
     user.value  = null
     ;['auth_token', 'is_logged_in', 'user', 'sso_creds', 'academy_id'].forEach(k =>

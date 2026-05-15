@@ -17,6 +17,7 @@ const PAGE_TITLES = {
   'hrms-att-computation':  'Attendance Computation',
   'hrms-att-reports':      'Attendance Reports',
   'hrms-evaluation':       'Performance Evaluation',
+  'hrms-departments':      'Department Master',
   // NESTS
   'nests-dashboard':       'NESTS — National Dashboard',
   'nests-schools':         'EMRS Schools',

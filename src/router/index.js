@@ -19,6 +19,7 @@ import AcademyDepartment  from '@/views/hrms/AcademyDepartment.vue'
 import AcademyDesignation from '@/views/hrms/AcademyDesignation.vue'
 import EmploymentType     from '@/views/hrms/EmploymentType.vue'
 import EmployeeType      from '@/views/hrms/EmployeeType.vue'
+import DocumentType     from '@/views/hrms/DocumentType.vue'
 
 // NESTS views
 import NestsDashboard   from '@/views/nests/NestsDashboard.vue'
@@ -76,6 +77,7 @@ const routes = [
   { path: '/hrms/designations',        name: 'hrms-designations',        component: AcademyDesignation },
   { path: '/hrms/employment-types',    name: 'hrms-employment-types',    component: EmploymentType },
   { path: '/hrms/employee-types',      name: 'hrms-employee-types',      component: EmployeeType },
+  { path: '/hrms/document-types',      name: 'hrms-document-types',      component: DocumentType },
 
   // NESTS
   { path: '/nests/dashboard',       name: 'nests-dashboard',       component: NestsDashboard },

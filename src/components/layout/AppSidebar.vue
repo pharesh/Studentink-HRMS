@@ -30,12 +30,12 @@
           <span class="nav-icon">📊</span>Dashboard
         </RouterLink>
       </div>
-      <div class="nav-section">
-        <div class="nav-group-label" @click="mastersOpen = !mastersOpen">
+      <div class="nav-section nav-masters-group" :class="{ 'masters-active': isMasterActive }">
+        <div class="nav-group-label">
           <span>Masters</span>
-          <span class="nav-chevron" :class="{ open: mastersOpen }">›</span>
+          <span class="nav-chevron">›</span>
         </div>
-        <div class="nav-group-items" :class="{ open: mastersOpen }">
+        <div class="nav-group-items">
           <RouterLink class="nav-item nav-item-sub" :class="{ active: isActive('hrms-departments') }" :to="{ name: 'hrms-departments' }" @click="appStore.closeSidebar()">
             <span class="nav-icon">🏢</span>Departments
           </RouterLink>
@@ -47,6 +47,9 @@
           </RouterLink>
           <RouterLink class="nav-item nav-item-sub" :class="{ active: isActive('hrms-employee-types') }" :to="{ name: 'hrms-employee-types' }" @click="appStore.closeSidebar()">
             <span class="nav-icon">👤</span>Employee Types
+          </RouterLink>
+          <RouterLink class="nav-item nav-item-sub" :class="{ active: isActive('hrms-document-types') }" :to="{ name: 'hrms-document-types' }" @click="appStore.closeSidebar()">
+            <span class="nav-icon">📄</span>Document Types
           </RouterLink>
         </div>
       </div>
@@ -233,14 +236,16 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAppStore } from '@/stores/useAppStore'
 
 const router   = useRouter()
 const appStore = useAppStore()
 
-const mastersOpen = ref(true)
+const MASTER_ROUTES = ['hrms-departments', 'hrms-designations', 'hrms-employment-types', 'hrms-employee-types', 'hrms-document-types']
+
+const isMasterActive = computed(() => MASTER_ROUTES.includes(router.currentRoute.value.name))
 
 function isActive(name) {
   return router.currentRoute.value.name === name
@@ -261,7 +266,7 @@ function switchMode(m) {
 <style scoped>
 .sidebar-root { display: contents; }
 
-/* Collapsible nav group */
+/* Hover-reveal Masters group */
 .nav-group-label {
   display: flex;
   align-items: center;
@@ -271,11 +276,9 @@ function switchMode(m) {
   padding: 6px 16px 3px;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  cursor: pointer;
   user-select: none;
   transition: color 0.15s;
 }
-.nav-group-label:hover { color: #5f5e5a; }
 
 .nav-chevron {
   font-size: 14px;
@@ -284,14 +287,22 @@ function switchMode(m) {
   transition: transform 0.22s ease;
   color: #c8c5bc;
 }
-.nav-chevron.open { transform: rotate(90deg); }
 
 .nav-group-items {
   overflow: hidden;
   max-height: 0;
-  transition: max-height 0.25s ease;
+  transition: max-height 0.28s ease;
 }
-.nav-group-items.open { max-height: 600px; }
+
+/* Show on hover */
+.nav-masters-group:hover .nav-group-items { max-height: 600px; }
+.nav-masters-group:hover .nav-chevron     { transform: rotate(90deg); }
+.nav-masters-group:hover .nav-group-label { color: #5f5e5a; }
+
+/* Keep open when a master route is active */
+.nav-masters-group.masters-active .nav-group-items { max-height: 600px; }
+.nav-masters-group.masters-active .nav-chevron     { transform: rotate(90deg); }
+.nav-masters-group.masters-active .nav-group-label { color: #5f5e5a; }
 
 /* Slightly indented sub-items */
 .nav-item-sub { padding-left: 28px; }

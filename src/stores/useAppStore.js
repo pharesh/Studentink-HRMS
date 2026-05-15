@@ -21,6 +21,7 @@ const PAGE_TITLES = {
   'hrms-designations':     'Designation Master',
   'hrms-employment-types': 'Employment Type Master',
   'hrms-employee-types':  'Employee Type Master',
+  'hrms-document-types':  'Document Type Master',
   // NESTS
   'nests-dashboard':       'NESTS — National Dashboard',
   'nests-schools':         'EMRS Schools',

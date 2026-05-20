@@ -61,7 +61,7 @@ const routes = [
   // HRMS
   { path: '/hrms/dashboard',        name: 'hrms-dashboard',        component: HrmsDashboard },
   { path: '/hrms/staff',            name: 'hrms-staff',            component: StaffList },
-  { path: '/hrms/staff/detail',     name: 'hrms-staff-detail',     component: StaffDetail },
+  { path: '/hrms/staff/:id',         name: 'hrms-staff-detail',     component: StaffDetail },
   { path: '/hrms/profile-requests', name: 'hrms-profile-requests', component: ProfileRequests },
   { path: '/hrms/holiday',          name: 'hrms-holiday',          component: HolidayMaster },
   { path: '/hrms/leave-calendar',   name: 'hrms-leave-calendar',   component: LeaveCalendar },

@@ -76,9 +76,7 @@
         <RouterLink class="nav-item" :class="{ active: isActive('hrms-employee-leave') }" :to="{ name: 'hrms-employee-leave' }" @click="appStore.closeSidebar()">
           <span class="nav-icon">🗂️</span>Employee Leave
         </RouterLink>
-        <RouterLink class="nav-item" :class="{ active: isActive('hrms-leave-ledger') }" :to="{ name: 'hrms-leave-ledger' }" @click="appStore.closeSidebar()">
-          <span class="nav-icon">📒</span>Leave Ledger
-        </RouterLink>
+
       </div>
       <div class="nav-section">
         <div class="nav-label">Shifts</div>

@@ -67,7 +67,7 @@ const routes = [
   { path: '/hrms/leave-calendar',   name: 'hrms-leave-calendar',   component: LeaveCalendar },
   { path: '/hrms/leave-types',      name: 'hrms-leave-types',      component: LeaveTypes },
   { path: '/hrms/employee-leave',   name: 'hrms-employee-leave',   component: EmployeeLeave },
-  { path: '/hrms/leave-ledger',     name: 'hrms-leave-ledger',     component: LeaveLedger },
+  { path: '/hrms/leave-ledger/:staffId?', name: 'hrms-leave-ledger', component: LeaveLedger },
   { path: '/hrms/shift-master',     name: 'hrms-shift-master',     component: ShiftMaster },
   { path: '/hrms/shift-assign',     name: 'hrms-shift-assign',     component: ShiftAssign },
   { path: '/hrms/att-computation',  name: 'hrms-att-computation',  component: AttComputation },
